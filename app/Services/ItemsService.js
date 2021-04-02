@@ -7,12 +7,17 @@ class ItemsService {
 //   }
 
 addToCart(id){
-
-
-   const foundItem = ProxyState.items.filter(i => i.id != id)
-   ProxyState.cart.push(new Item())
-    console.log(ProxyState.items);
-    //document.getElementById('cart').innerHTML = 
+debugger
+   const foundItem = ProxyState.items.filter(i => i.id === id)
+   if (foundItem[0].inCart === 0) {
+      foundItem[0].inCart++
+      ProxyState.cart.push(foundItem[0])
+   } else {
+      ProxyState.cart.forEach(c => {if(c.id === id) {c.inCart++}})
+   }
+   ProxyState.cart = ProxyState.cart
+   console.log(ProxyState.cart);
+   //document.getElementById('cart').innerHTML = 
 
 //if the item is added again, just increase the quantity.    
 

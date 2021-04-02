@@ -10,16 +10,17 @@ function _draw() {
   items.forEach(i => template += i.Template)
   document.getElementById("item-card").innerHTML = template
 
-let cart = ProxyState.cart
-let template2 = ''
-cart.forEach(c =>template2 += c.TemplateCart)
-document.getElementById("cart").innerHTML = template2
+  let cart = ProxyState.cart
+  let template2 = ''
+  cart.forEach(c =>template2 += c.TemplateCart)
+  document.getElementById("cart").innerHTML = template2
 }
 
 //Public
 export default class ItemsController {
   constructor() {
     ProxyState.on("items", _draw);
+    ProxyState.on("cart", _draw)
     _draw()
   }
 

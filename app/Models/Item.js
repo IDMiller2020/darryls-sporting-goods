@@ -1,7 +1,7 @@
 //import { generateId } from "../Utils/GenerateId.js"
 
 export default class Item {
-    constructor(title, price, description, stock, imgUrl, id) {
+    constructor(title, price, description, stock, imgUrl, id, inCart = 0) {
        //this.id = generateId() 
        this.id = id
        this.title = title
@@ -9,6 +9,7 @@ export default class Item {
        this.description = description
        this.stock = stock
        this.imgUrl = imgUrl
+       this.inCart = inCart
     }
 
     get Template() {
@@ -21,7 +22,7 @@ export default class Item {
                     </div>
                     <div class="card-body">
                       <h3 class="card-title">${this.title}</h3>
-                      <h5>${this.price}</h5>
+                      <h5>$${this.price}</h5>
                       <p class="card-text">${this.description}</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-0">${this.stock} in stock</p>
@@ -45,7 +46,7 @@ export default class Item {
                       <h5>${this.price}</h5>
                       <p class="card-text">${this.description}</p>
                       <div class="d-flex justify-content-between align-items-center">
-                        <p class="mb-0">${this.stock} in stock</p>
+                        <p class="mb-0">${this.inCart} in cart</p>
                       <a href="#" class="btn btn-success" onclick="app.itemsController.checkOut('${this.id}')">Check Out</a>  
                       </div>
                       
